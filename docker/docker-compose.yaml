@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  emqx:
+    image: emqx/emqx:latest
+    volumes:
+    - ./local-override.conf:/opt/emqx/data/configs/local-override.conf
+    environment:
+    - "EMQX_NAME=emqx"
+    - "EMQX_DASHBOARD__DEFAULT_USERNAME=admin"
+    - "EMQX_DASHBOARD__DEFAULT_PASSWORD=admin"
+    ports:
+    - "1883:1883"
+    - "18083:18083"
+
+  mysql:
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    volumes:
+    - ./setup.sql:/docker-entrypoint-initdb.d/setup.sql
+    environment:
+      MYSQL_ROOT_PASSWORD: public
+    ports:
+    - "3306:3306"
