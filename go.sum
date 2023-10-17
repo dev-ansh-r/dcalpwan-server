@@ -19,6 +19,8 @@ github.com/denisenkom/go-mssqldb v0.12.3 h1:pBSGx9Tq67pBOTLmxNuirNTeB8Vjmf886Kx+
 github.com/denisenkom/go-mssqldb v0.12.3/go.mod h1:k0mtMFOnU+AihqFxPMiF05rtiDrorD1Vrm1KEz5hxDo=
 github.com/dev-ansh-r/lora-dash v0.0.0-20231012051515-cda2aedd3580 h1:w7H7HBBWmnqMdZrU0dKEm/5jBoxH1YnxEry4KJHnDvk=
 github.com/dev-ansh-r/lora-dash v0.0.0-20231012051515-cda2aedd3580/go.mod h1:Hh01hPL6clr7lhVPWZB4Y6tBqwpUXY9ZIiZDPn+M+6s=
+github.com/dev-ansh-r/lora-dash v0.0.0-20231017142701-016b4c1574c6 h1:C2g/O8az+XyMOvsNjsUk0J5PNnXjvE4U1wkQkykhntA=
+github.com/dev-ansh-r/lora-dash v0.0.0-20231017142701-016b4c1574c6/go.mod h1:TeTdS7pcQRLFbk4UkpbIJ7Ip0MIFmkIg4MlrpxxhOlk=
 github.com/dnaeon/go-vcr v1.2.0/go.mod h1:R4UdLID7HZT3taECzJs4YgbbH6PIGXB6W/sc5OLb6RQ=
 github.com/gabriel-vasile/mimetype v1.4.2 h1:w5qFW6JKBz9Y393Y4q372O9A7cUSequkh1Q7OhCmWKU=
 github.com/gabriel-vasile/mimetype v1.4.2/go.mod h1:zApsH/mKG4w07erKIaJPFiX0Tsq9BFQgN3qGY5GnNgA=

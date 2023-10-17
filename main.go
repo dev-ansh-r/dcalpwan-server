@@ -1,8 +1,8 @@
 package main
 
 import (
-	"github.com/dev-ansh-r/lora-dash/controllers"
-	"github.com/dev-ansh-r/lora-dash/models"
+	"github.com/dev-ansh-r/dcalpwan-server/controllers"
+	"github.com/dev-ansh-r/dcalpwan-server/models"
 	"github.com/gin-gonic/gin"
 	_ "github.com/lib/pq"
 )
