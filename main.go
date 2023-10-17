@@ -1,16 +1,26 @@
 package main
 
 import (
-	"github.com/dev-ansh-r/lorawan-server/controllers"
+	"github.com/dev-ansh-r/lora-dash/controllers"
+	"github.com/dev-ansh-r/lora-dash/models"
+	"github.com/gin-gonic/gin"
+	_ "github.com/lib/pq"
 )
 
 func main() {
-	// models.DBConnect()
-	// models.DBMigrate()
+	r := gin.Default()
 
-	// defer models.DBClose()
+	// Serve static files
+	r.Static("/static", "./static")
+	// Load HTML templates
+	r.LoadHTMLGlob("templates/*.html")
 
-	// go controllers.StartJoinServer()
+	// Setup the database and get the db connection
+	db := models.SetupDB()
+	defer db.Close() // Close the database connection when the application exits
 
-	controllers.StartServer()
+	// Pass the db connection to your controllers
+	controllers.SetupRoutes(r, db)
+
+	r.Run(":8080")
 }

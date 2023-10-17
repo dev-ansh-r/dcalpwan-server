@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+        crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="page">
+        <!-- Add a consistent header for the page -->
+        <header>
+            {{ template "navbar.html" . }}
+            <h1>{{ .pageTitle }}</h1>
+        </header>
+
+        <main>
+            <form class="network-form">
+                <h1>Network Settings</h1>
+
+                <h3>Current Network Type</h3>
+                <input type="radio" id="priorityBased" name="networkType" value="priorityBased">
+                <label for="priorityBased">Priority Based</label>
+                <input type="radio" id="reservationBased" name="networkType" value="reservationBased">
+                <label for="reservationBased">Reservation Based</label>
+
+                <h3>Beacon Settings</h3>
+                <label for="beaconTiming">Beacon Timing</label>
+                <select id="beaconTiming" name="beaconTiming">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                </select>
+                <label for="beaconPeriod">Beacon Period</label>
+                <input type="text" id="beaconPeriod" name="beaconPeriod" value="120s">
+                <label for="beaconSlotLength">Beacon Slot Length</label>
+                <input type="text" id="beaconSlotLength" name="beaconSlotLength" value="2s">
+
+                <h3>Beacon Channel</h3>
+                <input type="checkbox" id="ch4" name="beaconChannel" value="CH4">
+                <label for="ch4">CH4 922.7 MHz</label>
+                <input type="checkbox" id="ch5" name="beaconChannel" value="CH5">
+                <label for="ch5">CH5 922.9 MHz</label>
+                <input type="checkbox" id="ch6" name="beaconChannel" value="CH6">
+                <label for="ch6">CH6 923.1 MHz</label>
+                <input type="checkbox" id="ch7" name="beaconChannel" value="CH7">
+                <label for="ch7">CH7 923.3 MHz</label>
+
+                <h3>Beacon DR</h3>
+                <label for="beaconDR">Beacon DR</label>
+                <select id="beaconDR" name="beaconDR">
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                </select>
+
+                <h3>Network Channel Settings</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>CH Idx</th>
+                            <th>Center Frequency (MHz)</th>
+                            <th>Operation Mode</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- You can dynamically generate the table rows with JavaScript -->
+                        <!-- Example row:
+                        <tr>
+                            <td>0</td>
+                            <td>922.1</td>
+                            <td>
+                                <input type="checkbox" id="ch0Disable" name="ch0Mode" value="Disable">
+                                <label for="ch0Disable">Disable</label>
+                                <input type="checkbox" id="ch0Active" name="ch0Mode" value="Active">
+                                <label for="ch0Active">Active</label>
+                                <input type="checkbox" id="ch0Beacon" name="ch0Mode" value="Beacon">
+                                <label for="ch0Beacon">Beacon</label>
+                            </td>
+                        </tr>
+                        -->
+                    </tbody>
+                </table>
+
+                <button id="updateButton">Update</button>
+            </form>
+        </main>
+    </div>
+
+    <script src="/static/js/main.js"></script>
+</body>
+
+</html>

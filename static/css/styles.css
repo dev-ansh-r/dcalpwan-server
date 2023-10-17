@@ -1,0 +1,129 @@
+/* styles.css */
+
+body {
+    background-color: white;
+    color: black;
+    font-family: Arial, sans-serif;
+}
+
+header {
+    background-color: #3498db; /* Blue color */
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+main {
+    padding: 20px;
+}
+
+/* Add your additional styling here */
+/* styles.css */
+
+body {
+    background-color: #f0f0f0; /* Light gray background */
+    color: #333; /* Dark gray text color */
+    font-family: Arial, sans-serif;
+}
+
+header {
+    background-color: #3498db; /* Blue color */
+    color: white;
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.menu a {
+    color: white;
+    text-decoration: none;
+    margin-right: 20px;
+}
+
+.main-container {
+    padding: 20px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    background-color: white;
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #3498db; /* Blue header background */
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2; /* Light gray alternating row background */
+}
+
+#addApplicationButton, #addGatewayButton, #updateButton {
+    background-color: #3498db; /* Blue button background */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+}
+
+#addApplicationButton:hover, #addGatewayButton:hover, #updateButton:hover {
+    background-color: #217dbb; /* Darker blue on hover */
+}
+
+/* Add more styles as needed */
+
+/* styles.css */
+
+/* Navbar styles */
+.navbar {
+    background-color: #3498db; /* Blue background color */
+    color: #fff; /* White text color */
+    padding: 10px 0;
+    text-align: center;
+}
+
+/* Navbar menu styles */
+.navbar-menu {
+    list-style-type: none;
+    padding: 0;
+}
+
+.navbar-item {
+    display: inline;
+    margin-right: 20px;
+    font-size: 18px;
+}
+
+.navbar-item a {
+    text-decoration: none;
+    color: #fff;
+    transition: color 0.3s;
+}
+
+.navbar-item a:hover {
+    color: #217dbb; /* Slightly darker blue on hover */
+}
+
+.button {
+    /* Match the properties of the "gatewaybutton" class */
+    background-color: #007BFF; /* Example background color */
+    color: #FFFFFF; /* Example text color */
+    border: 1px solid #007BFF; /* Example border style */
+    padding: 10px 20px; /* Example padding */
+    cursor: pointer; /* Example cursor style */
+}
+
+/* Additional styles for "button" class, if needed */
+.button:hover {
+    background-color: #0056b3; /* Example hover background color */
+    color: #FFFFFF; /* Example hover text color */
+}
