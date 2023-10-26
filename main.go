@@ -19,6 +19,14 @@ func main() {
 	db := models.SetupDB()
 	defer db.Close() // Close the database connection when the application exits
 
+	r.Use(func(c *gin.Context) {
+		c.Set("db", db) // Set the database connection in the context
+		c.Next()
+	})
+
+	// Migrate the database
+	models.Migrate()
+
 	// Pass the db connection to your controllers
 	controllers.SetupRoutes(r, db)
 

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Gateway</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" crossorigin="anonymous">
+</head>
+<body>
+    <header>
+        {{ template "navbar.html" . }}
+        <h1>Add Gateway</h1>
+    </header>
+    <main>
+        <form action="/gateways/add" method="POST">
+            <h2>Gateway Information</h2>
+            <label for="gweui">Gateway EUI (8 bytes):</label>
+            <input type="text" id="gweui" name="gweui" required>
+
+            <label for="gwid">Gateway ID:</label>
+            <input type="text" id="gwid" name="gwid" required>
+
+            <label for="description">Description:</label>
+            <input type="text" id="description" name="description">
+
+            <label for="keepAlive">Keep Alive Interval:</label>
+            <select id="keepAlive" name="keepAlive">
+                <option value="10">10 seconds</option>
+                <option value="20">20 seconds</option>
+                <option value="30">30 seconds</option>
+                <!-- Add more options as needed -->
+            </select>
+
+            <label for="latitude">Latitude:</label>
+            <input type="text" id="latitude" name="latitude">
+
+            <label for="longitude">Longitude:</label>
+            <input type="text" id="longitude" name="longitude">
+
+            <label for="height">Height:</label>
+            <input type="text" id="height" name="height">
+
+            <button type="submit">Add Gateway</button>
+            <button type="button" onclick="window.location='/gateways'">Cancel</button>
+        </form>
+    </main>
+    <script src="/static/js/main.js"></script>
+</body>
+</html>

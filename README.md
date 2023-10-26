@@ -21,8 +21,8 @@ LoRaWAN Network Controller is a Go application that provides a web-based interfa
 2. Start the application with go
 ```bash
 cd dcalpwan-server
-go mod download
-go run main.go 
+go1.20 mod download
+go1.20 run main.go 
 ```
 **Warning** please setup migration and databases and .env file for the same
 

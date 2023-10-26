@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Application</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+
+<body>
+    <div class="page">
+        <!-- Add a consistent header for the page -->
+        <header>
+            {{ template "navbar.html" . }}
+            <h1>Add Application</h1>
+        </header>
+
+        <main>
+            <form action="/applications/add" method="POST">
+                <label for="appId">App ID</label>
+                <input type="text" id="appId" name="appId" required>
+                
+                <label for="appEUI">App EUI</label>
+                <input type="text" id="appEUI" name="appEUI" required>
+                
+                <label for="description">Description</label>
+                <input type="text" id="description" name="description">
+                
+                <h3>Channel Access Type</h3>
+                <input type="checkbox" id="priorityBased" name="channelAccessType" value="priorityBased">
+                <label for="priorityBased">Priority Based</label>
+                
+                <input type="checkbox" id="reservationBased" name="channelAccessType" value="reservationBased">
+                <label for="reservationBased">Reservation Based</label>
+                
+                <button type="submit">Submit</button>
+                <button type="button" onclick="window.location='/applications'">Cancel</button>
+            </form>
+        </main>
+    </div>
+</body>
+
+</html>

@@ -1,133 +1,128 @@
 // main.js for home page
 
 document.addEventListener("DOMContentLoaded", function () {
-  // Function to add rows to the Gateways table
-  function addGatewayRow(gatewayData) {
-      const gatewayTable = document.querySelector("#gateways table tbody");
-      const row = gatewayTable.insertRow();
-      row.insertCell(0).textContent = gatewayData.GWID;
-      row.insertCell(1).textContent = gatewayData.GWEUI;
-      row.insertCell(2).textContent = gatewayData.Description;
-      row.insertCell(3).textContent = gatewayData["Last seen"];
-  }
+    // Function to add rows to the Gateways table
+    function addGatewayRow(gatewayData) {
+        const gatewayTable = document.querySelector("#gateways table tbody");
+        const row = gatewayTable.insertRow();
+        row.insertCell(0).textContent = gatewayData.GWID;
+        row.insertCell(1).textContent = gatewayData.GWEUI;
+        row.insertCell(2).textContent = gatewayData.Description;
+        row.insertCell(3).textContent = gatewayData["Last seen"];
+    }
 
-  // Function to add rows to the Applications table
-  function addApplicationRow(applicationData) {
-      const applicationTable = document.querySelector("#applications table tbody");
-      const row = applicationTable.insertRow();
-      row.insertCell(0).textContent = applicationData.APPID;
-      row.insertCell(1).textContent = applicationData.APPEUI;
-      row.insertCell(2).textContent = applicationData.Devices;
-      row.insertCell(3).textContent = applicationData.Description;
-  }
+    // Function to add rows to the Applications table
+    function addApplicationRow(applicationData) {
+        const applicationTable = document.querySelector("#applications table tbody");
+        const row = applicationTable.insertRow();
+        row.insertCell(0).textContent = applicationData.APPID;
+        row.insertCell(1).textContent = applicationData.APPEUI;
+        row.insertCell(2).textContent = applicationData.Devices;
+        row.insertCell(3).textContent = applicationData.Description;
+    }
 
-  // Example data (you should fetch this data from your backend)
-  const gatewayData = [
-      { GWID: 1, GWEUI: "DCA632FEEE27FF12", Description: "Gateway 1", "Last seen": "2023-10-12" },
-      { GWID: 2, GWEUI: "FFFE27FF12DCA632", Description: "Gateway 2", "Last seen": "2023-10-11" },
-  ];
+    applicationData.forEach(addApplicationRow);
 
-//   const applicationData = [
-//       { APPID: 101, APPEUI: "APP001", Devices: 10, Description: "App 1" },
-//       { APPID: 102, APPEUI: "APP002", Devices: 5, Description: "App 2" },
-//   ];
-
-  // Add rows to the tables
-  gatewayData.forEach(addGatewayRow);
-  applicationData.forEach(addApplicationRow);
+    //fetch gateway data friom server
+    fetch("/gateways")
+        .then((response) => response.json())
+        .then((data) => {
+            const gatewayTableBody = document.getElementById("gatewayTableBody");
+            // Clear the existing rows
+            gatewayTableBody.innerHTML = '';
+            data.forEach(addGatewayRow);
+        })
+        .catch((error) => {
+            console.error("Error fetching gateway data:", error);
+        });
 });
 
 
 // main.js for applications page
 document.addEventListener("DOMContentLoaded", function () {
 
-  // Function to add a new application row to the Applications table
-  function addApplicationRow(applicationData) {
-      const applicationTable = document.querySelector("#applications table tbody");
-      const row = applicationTable.insertRow();
-      row.insertCell(0).textContent = applicationData.APPID;
-      row.insertCell(1).textContent = applicationData.APPEUI;
-      row.insertCell(2).textContent = applicationData.Devices;
-      row.insertCell(3).textContent = applicationData.Description;
-      const ctrlCell = row.insertCell(4);
+    // Function to add a new application row to the Applications table
+    function addApplicationRow(applicationData) {
+        const applicationTable = document.querySelector("#applications table tbody");
+        const row = applicationTable.insertRow();
+        row.insertCell(0).textContent = applicationData.APPID;
+        row.insertCell(1).textContent = applicationData.APPEUI;
+        row.insertCell(2).textContent = applicationData.Devices;
+        row.insertCell(3).textContent = applicationData.Description;
+        const ctrlCell = row.insertCell(4);
 
-      // Settings button
-      const settingsButton = document.createElement("button");
-      settingsButton.innerHTML = '<i class="fas fa-cog"> </i>Settings';
-      settingsButton.addEventListener("click", function () {
-          // Handle settings button click (e.g., open a settings modal)
-      });
+        // Settings button
+        const settingsButton = document.createElement("button");
+        settingsButton.innerHTML = '<i class="fas fa-cog"> </i>Settings';
+        settingsButton.addEventListener("click", function () {
+            // Handle settings button click (e.g., open a settings modal)
+        });
 
-      // Delete button
-      const deleteButton = document.createElement("button");
-      deleteButton.innerHTML = '<i class="fas fa-trash-alt"></i>Delete';
-      deleteButton.addEventListener("click", function () {
-          // Handle delete button click (e.g., delete the application)
-          row.remove();
-      });
+        // Delete button
+        const deleteButton = document.createElement("button");
+        deleteButton.innerHTML = '<i class="fas fa-trash-alt"></i>Delete';
+        deleteButton.addEventListener("click", function () {
+            // Handle delete button click (e.g., delete the application)
+            row.remove();
+        });
 
-      ctrlCell.appendChild(settingsButton);
-      ctrlCell.appendChild(deleteButton);
-  }
-  const applicationData = [
-    { APPID: 101,   APPEUI: "70B3D57ED0060F5F", Devices: 10, Description: "App 1" },
-    { APPID: 102, APPEUI: "57ED0060F5F70B3D", Devices: 5, Description: "App 2" },
-];
+        ctrlCell.appendChild(settingsButton);
+        ctrlCell.appendChild(deleteButton);
+    }
 
-  // Add rows to the Applications table
-  applicationData.forEach(addApplicationRow);
+    // Handle the "Add Application" button click
+    const addApplicationButton = document.getElementById("addApplicationButton");
+    addApplicationButton.addEventListener("click", function () {
+        window.location.href = "applications/add";
+    });
 
-  // Handle the "Add Application" button click
-  const addApplicationButton = document.getElementById("addApplicationButton");
-  addApplicationButton.addEventListener("click", function () {
-      // Handle adding a new application (e.g., show an add application form)
-  });
+    // Add rows to the Applications table
+    applicationData.forEach(addApplicationRow);
 });
 
 
 
 // main.js for gateways page
-
 document.addEventListener("DOMContentLoaded", function () {
 
-  // Function to add a new gateway row to the Gateways table
-  function addGatewayRow(gatewayData) {
-      const gatewayTable = document.querySelector("#gateways table tbody");
-      const row = gatewayTable.insertRow();
-      row.insertCell(0).textContent = gatewayData.GWID;
-      row.insertCell(1).textContent = gatewayData.GWEUI;
-      row.insertCell(2).textContent = gatewayData.Description;
-      row.insertCell(3).textContent = gatewayData["Last seen"];
-      const ctrlCell = row.insertCell(4);
+    // Function to add a new gateway row to the Gateways table
+    function addGatewayRow(gatewayData) {
+        const gatewayTable = document.querySelector("#gateways table tbody");
+        const row = gatewayTable.insertRow();
+        row.insertCell(0).textContent = gatewayData.GWID;
+        row.insertCell(1).textContent = gatewayData.GWEUI;
+        row.insertCell(2).textContent = gatewayData.Description;
+        row.insertCell(3).textContent = gatewayData["Last seen"];
+        const ctrlCell = row.insertCell(4);
 
-      // Settings button
-      const settingsButton = document.createElement("button");
-      settingsButton.innerHTML='<i class="fas fa-cog"> </i>Settings';
-      settingsButton.addEventListener("click", function () {
-          // Handle settings button click (e.g., open a settings modal)
-      });
+        // Settings button
+        const settingsButton = document.createElement("button");
+        settingsButton.innerHTML = '<i class="fas fa-cog"> </i>Settings';
+        settingsButton.addEventListener("click", function () {
+            // Handle settings button click (e.g., open a settings modal)
+        });
 
-      // Delete button
-      const deleteButton = document.createElement("button");
-      deleteButton.innerHTML='<i class="fas fa-trash-alt"></i>Delete';
-      deleteButton.addEventListener("click", function () {
-          // Handle delete button click (e.g., delete the gateway)
-          row.remove();
-      });
+        // Delete button
+        const deleteButton = document.createElement("button");
+        deleteButton.innerHTML = '<i class="fas fa-trash-alt"></i>Delete';
+        deleteButton.addEventListener("click", function () {
 
-      ctrlCell.appendChild(settingsButton);
-      ctrlCell.appendChild(deleteButton);
-  }
+            row.remove();
+        });
+
+        ctrlCell.appendChild(settingsButton);
+        ctrlCell.appendChild(deleteButton);
+    }
 
 
-  // Add rows to the Gateways table
-  gatewayData.forEach(addGatewayRow);
+    // Handle the "Add Gateway" button click
+    const addGatewayButton = document.getElementById("addGatewayButton");
+    addGatewayButton.addEventListener("click", function () {
+        window.location.href = "gateways/add";
+    });
 
-  // Handle the "Add Gateway" button click
-  const addGatewayButton = document.getElementById("addGatewayButton");
-  addGatewayButton.addEventListener("click", function () {
-      // Handle adding a new gateway (e.g., show an add gateway form)
-  });
+    // Add rows to the Gateways table
+    gatewayData.forEach(addGatewayRow);
 });
 
 
